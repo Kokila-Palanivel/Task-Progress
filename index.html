@@ -8,55 +8,53 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
         </script>
         <style>
-            /* Container styles */
-            .image-container {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 100px; 
-            }
-    
-            /* Image styles */
-            .image-container img {
-                max-width: 100%; 
-                max-height: 100%; 
-                width: auto;
-                height: auto;
-    }
-    </style>
-    
-    </head>
-    <body>
-        <div ng-app ="mainApp">
-            <div id="container">
-            <div ng-controller = "people">
-                
-                    <table border="1">
-                    
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Profile</th>
-                        </tr>
-                        <tr ng-repeat = "person in persons"> 
-                            <td>{{ person.id }}</td>
-                            <td>{{ person.login }}</td>
-                            <td>
-                                <div class="image-container">
-                                    <img src="{{ person.avatar_url }}" alt="{{ person.login }}">
-                                </div>
-                            </td>
-                        
-                    </tr>
-                       
-                    </div>
-              
-            </div>
-        </div>
+           .container{
+            display:grid;
+            grid-template-columns:repeat(5,2fr);
+           
+           }
+           .image-container img{
+           width:100px;
+           }
+           .button {
+                border: blue;
+                color: white;
+                padding: 3px 2px;
+                text-align:left;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 10px;
+                margin: 4px 2px;
+                transition-duration: 0.5ss;
+                cursor: pointer;
+                }
 
+            .button1 {
+            background-color: white; 
+            color: black; 
+            border: 2px solid #180424;
+            }
+
+        </style>
+        
+    </head>
+     <body>
+        <div ng-app ="mainApp" ng-controller = "people">
+                        <div class="container" > 
+                                <div class="image-container" ng-repeat = "person in persons" >
+                                    <img src="{{ person.avatar_url }}" alt="{{ person.login }}">
+                                <div column ="classs">
+                                     <button class="button button1"> {{"USERID:" + person.id }} 
+                                        <p>HTML:<a href="{{ person.html_url  }}">{{ person.html_url  }}</a> </p>
+                                </button> 
+                                    
+                                   
+                                </div>
+                                 </div>
+                        </div>
         </div>
         <script src="controller.js">
-
         </script>
+        
     </body>
 </html>
